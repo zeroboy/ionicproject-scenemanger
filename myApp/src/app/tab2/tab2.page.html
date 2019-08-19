@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      task list
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-button type="button"  color="secondary" (click)="queryUser()" >查询数据</ion-button>
+  </div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of userList;">
+      <ion-item>
+        <h2>用户名：{{item.username}}</h2>
+        <p>邮箱：{{item.email}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="right" (click)="updateUser(item)">
+          <ion-icon name="ios-create-outline"></ion-icon>
+          编辑
+        </button>
+        <button ion-button color="danger" (click)="deleteUser(item)">
+          <ion-icon name="ios-trash-outline"></ion-icon>
+          删除
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <div class="add-btn">
+    <ion-button color="light" (click)="showAddPrompt()" color="success" >添加 <ion-icon name="md-add" style="margin-left: 5px"></ion-icon></ion-button>
+  </div>
+</ion-content>
+

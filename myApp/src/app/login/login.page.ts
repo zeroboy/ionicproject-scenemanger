@@ -5,6 +5,7 @@ import { TabsPageModule } from "../tabs/tabs.module";
 import {toBase64String} from "@angular/compiler/src/output/source_map";
 
 import { HTTP } from "@ionic-native/http/ngx"
+import { Userlist} from "../../providers/userlist/userlist";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { HTTP } from "@ionic-native/http/ngx"
 })
 export class LoginPage implements OnInit {
 
-  constructor(public navCtrl: NavController, public httpCtrl: HTTP, public AlertCtrl: AlertController) { }
+  constructor(public navCtrl: NavController, public httpCtrl: HTTP, public AlertCtrl: AlertController, public UserlistCtrl: Userlist) { }
 
   ngOnInit() {
 
@@ -50,7 +51,7 @@ export class LoginPage implements OnInit {
       //alert(userinfo);
 
       //valid
-     this.httpCtrl.get("../../assets/json/user.json",{},{})
+     /*this.httpCtrl.get("../../assets/json/user.json",{},{})
          .then((data) => {
              let userlist = JSON.parse(data.data);
              let valids = userlist.filter((item) => {
@@ -74,7 +75,29 @@ export class LoginPage implements OnInit {
          })
          .catch((err) => {
             console.log(err)
-         });
+         });*/
+
+        let userlist = this.UserlistCtrl.getuserlit();
+
+        let valids = userlist.filter((item) => {
+            return ((item.username == a.value) && (item.password == b.value))
+        });
+        console.log(valids);
+
+        if(valids.length == 0){
+            this.presentAlert('账号或密码不正确，请重新输入！');
+        }else{
+            //登入
+            localStorage.setItem("usertoken",a.value+ '|'+Date.now());
+
+            //跳转页面
+            this.navCtrl.navigateForward(['/tabs/tab1'],{
+                queryParams:{
+                    username :a.value
+                }
+            });
+        }
+
     }
   }
 

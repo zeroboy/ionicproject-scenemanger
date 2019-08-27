@@ -28,10 +28,11 @@ export class Tab1Page {
               public httpCtrl: HTTP,
               public ngxDataTable: NgxDatatableModule
               ) {
-      //this.datas = [{"id":"4","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"5","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"6","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"7","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"8","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"9","name":"封神榜","place_num":"160011","lens_type":"43","fodder_num":"123456","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"10","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"11","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"12","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"13","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."}];
-      this.fetch((data) => {
+      //this.cameralist = [{"id":"4","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"5","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"6","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"7","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"8","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"9","name":"封神榜","place_num":"160011","lens_type":"43","fodder_num":"123456","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"10","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"11","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"12","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."},{"id":"13","name":"封神榜","place_num":"160011","lens_type":"36","fodder_num":"A058C049","take_message":"无","add_time":"2019-08-24 21:10:48","lens_make_message":"下方岩壁延伸，中..."}];
+      /*this.fetch((data) => {
           this.cameralist = data;
-      });
+      });*/
+      this.getlist(1);
   }
 
 
@@ -67,19 +68,22 @@ export class Tab1Page {
           data: { curr: curr}
       };
       var that = this;
-      var all =  this.cameralist;
+      //var all =  this.cameralist;
       // @ts-ignore
       this.httpCtrl.sendRequest('http://scenemanger.zeroboy.cn/api.php/Camera/getlist',options)
           .then((data) => {
 
               let res = JSON.parse(data.data);
               for (var i=0;i<res['data'].length;i++){
-                  all.push(res['data'][i]);
+                  that.cameralist.push(res['data'][i]);
               }
+          })
+          .catch((err) => {
+
           });
 
-      that.cameralist = all;
-      console.log(222222);
+      //that.cameralist = all;
+      console.log(222222333);
       console.log(that.cameralist);
   }
 
@@ -103,8 +107,10 @@ export class Tab1Page {
       event.target.complete();
 
       var nowlwn = this.cameralist.length;
-      var curr = parseInt(String(nowlwn / 10));
+      console.log('len:'+String(nowlwn));
+      var curr = (nowlwn == 0)?1:parseInt(String(nowlwn / 10));
 
+        console.log('curr:'+String(curr));
       // App logic to determine if all data is loaded
       // and disable the infinite scroll
       if (nowlwn % 10 != 0) {

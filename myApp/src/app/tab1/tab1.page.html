@@ -10,19 +10,40 @@
       Toggle Infinite Scroll
     </ion-button>-->
 
-    <ion-list>
+    <!--<ion-list>
       <ion-item-sliding *ngFor="let item of datas;">
       <ion-item >
         <p>{{item.name}}</p>
+        <p>{{item.place_num}}</p>
+        <p>{{item.fodder_num}}</p>
+        <p>{{item.lens_type}}</p>
+        <p>{{item.take_message}}</p>
+        <p>{{item.lens_make_message}}</p>
       </ion-item>
       </ion-item-sliding>
-    </ion-list>
+    </ion-list>-->
 
-    <!--<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+
+    <ngx-datatable
+            class='material'
+            [rows]='cameralist'
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'">
+      <ngx-datatable-column
+              *ngFor="let col of columns"
+              [name]="col.name"
+              [prop]="col.prop"
+      >
+      </ngx-datatable-column>
+    </ngx-datatable>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content
               loadingSpinner="bubbles"
-              loadingText="Loading more data...">
+              loadingText="加载数据中...">
       </ion-infinite-scroll-content>
-    </ion-infinite-scroll>-->
+    </ion-infinite-scroll>
   </ion-content>
 </ion-app>

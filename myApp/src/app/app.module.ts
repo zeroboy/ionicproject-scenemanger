@@ -24,6 +24,7 @@ import {Tab4PageModule} from "./tab4/tab4.module";
 import { Userlist} from "../providers/userlist/userlist";
 
 import { HTTP } from "@ionic-native/http/ngx"
+import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,6 +47,7 @@ import { HTTP } from "@ionic-native/http/ngx"
     LoginPage,
     HTTP,
     Userlist,
+    NgxDatatableModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

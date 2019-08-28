@@ -25,15 +25,17 @@
 
 
     <ngx-datatable
-            class='material'
-            [rows]="cameralist"
+            class="bootstrap"
+            [rows]="rows | async"
+            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50"
-            [rowHeight]="'auto'"
-            [scrollbarV]="true"
-            [scrollbarH]="true"
-            [columns]="columns">
+            [rowHeight]="50"
+            [scrollbarV]="false"
+            [scrollbarH]="false"
+            [limit]="100"
+            >
       <ngx-datatable-column
               *ngFor="let col of columns"
               [name]="col.name"
@@ -42,7 +44,7 @@
       </ngx-datatable-column>
     </ngx-datatable>
 
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content
               loadingSpinner="bubbles"
               loadingText="加载数据中...">
@@ -50,3 +52,4 @@
     </ion-infinite-scroll>
   </ion-content>
 </ion-app>
+

@@ -1,0 +1,55 @@
+<ion-app>
+  <ion-header translucent>
+    <ion-toolbar>
+      <ion-title>当前登录用户：{{username_about}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!--<ion-button (click)="toggleInfiniteScroll()" expand="block">
+      Toggle Infinite Scroll
+    </ion-button>-->
+
+    <!--<ion-list>
+      <ion-item-sliding *ngFor="let item of datas;">
+      <ion-item >
+        <p>{{item.name}}</p>
+        <p>{{item.place_num}}</p>
+        <p>{{item.fodder_num}}</p>
+        <p>{{item.lens_type}}</p>
+        <p>{{item.take_message}}</p>
+        <p>{{item.lens_make_message}}</p>
+      </ion-item>
+      </ion-item-sliding>
+    </ion-list>-->
+
+
+    <ngx-datatable
+            class="bootstrap"
+            [rows]="rows | async"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="50"
+            [scrollbarV]="false"
+            [scrollbarH]="false"
+            [limit]="100"
+            >
+      <ngx-datatable-column
+              *ngFor="let col of columns"
+              [name]="col.name"
+              [prop]="col.prop"
+      >
+      </ngx-datatable-column>
+    </ngx-datatable>
+
+    <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+              loadingSpinner="bubbles"
+              loadingText="加载数据中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-app>
+

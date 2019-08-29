@@ -50,6 +50,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable'
     NgxDatatableModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {}

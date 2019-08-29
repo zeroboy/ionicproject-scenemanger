@@ -1,4 +1,4 @@
-import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {NavController, AlertController, IonInfiniteScroll} from "@ionic/angular";
 
 import { ActivatedRoute } from '@angular/router';
@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-    selector: 'app-tab1',
-    templateUrl: 'tab1.page.html',
-    styleUrls: [
-        'tab1.page.scss',
-        'material.scss'
-    ],
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: [
+      'tab1.page.scss',
+      '../../assets/css/theme/bootstrap.scss',
+      '../../assets/css/theme/dark.scss'
+  ]
 })
 export class Tab1Page {
     // @ts-ignore
@@ -41,7 +41,6 @@ export class Tab1Page {
         { prop: 'take_message', name: 'take信息', width:80},
         { prop: 'lens_make_message', name: '制作镜头信息', width:120},
     ];
-    public loadingIndicator: boolean = true;
 
     constructor(public navCtrl: NavController,
                 public alertCtrl: AlertController,
@@ -59,11 +58,6 @@ export class Tab1Page {
                 //subscriber.next(data.splice(15, 30));
                 //subscriber.complete();
                 this.subscriberObj = subscriber;
-
-                //加载条结束显示
-                setTimeout(() => {
-                    this.loadingIndicator = false;
-                },2000)
 
             });
         });
@@ -129,37 +123,31 @@ export class Tab1Page {
      */
     loadData(event) {
         setTimeout(() => {
-            console.log('Done');
-            event.target.complete();
+          console.log('Done');
+          event.target.complete();
 
             // App logic to determine if all data is loaded
             // and disable the infinite scroll
-            if (this.pagination.totalResults % this.pagination.pageSize != 0) {
-                event.target.disabled = true;
-                return;
-            }
-            let curr = (this.pagination.totalResults == 0)?1:(this.pagination.currentPage+1);
-            //let subscriberObj = this.subscriberObj;
-            this.getlist(curr ,(data) => {
-                console.log('loadData....');
-                console.log(data);
-                this.cameralist = this.cameralist.concat(data);
-                console.log('cameralist');
-                console.log(this.cameralist);
-                this.subscriberObj.next(this.cameralist);
-                console.log(this.subscriberObj);
-            });
-        }, 500);
+                if (this.pagination.totalResults % this.pagination.pageSize != 0) {
+                    event.target.disabled = true;
+                    return;
+                }
+                let curr = (this.pagination.totalResults == 0)?1:(this.pagination.currentPage+1);
+                //let subscriberObj = this.subscriberObj;
+                this.getlist(curr ,(data) => {
+                    console.log('loadData....');
+                    console.log(data);
+                    this.cameralist = this.cameralist.concat(data);
+                    console.log('cameralist');
+                    console.log(this.cameralist);
+                    this.subscriberObj.next(this.cameralist);
+                    console.log(this.subscriberObj);
+                });
+        }, 2000);
     }
 
     toggleInfiniteScroll() {
         this.infiniteScroll.disabled = !this.infiniteScroll.disabled;
-    }
-
-    getCellClass({ row, column, value }): any {
-        return {
-            'ngx-tab-field': true
-        };
     }
 
 

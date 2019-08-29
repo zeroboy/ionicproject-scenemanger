@@ -62,7 +62,7 @@
     }
 
     .datatable-pager {
-      margin: 0 10px;
+			margin: 0 10px;
       vertical-align: top;
 
       ul {
@@ -77,31 +77,31 @@
             }
           }
         }
-      }
+			}
 
-      a {
-        height: 22px;
-        min-width: 24px;
-        line-height: 22px;
-        padding: 0;
-        border-radius: 3px;
-        margin: 0 3px;
-        text-align: center;
-        vertical-align: top;
-        text-decoration: none;
-        vertical-align: bottom;
+			a {
+				height: 22px;
+				min-width: 24px;
+				line-height: 22px;
+				padding: 0;
+				border-radius: 3px;
+				margin: 0 3px;
+				text-align: center;
+				vertical-align: top;
+				text-decoration: none;
+		    vertical-align: bottom;
         color: #72809b;
-      }
+			}
 
-      .datatable-icon-left,
-      .datatable-icon-skip,
-      .datatable-icon-right,
-      .datatable-icon-prev {
+			.datatable-icon-left,
+			.datatable-icon-skip,
+			.datatable-icon-right,
+			.datatable-icon-prev {
         font-size: 18px;
         line-height: 27px;
-        padding:0 3px;
-      }
-    }
+				padding:0 3px;
+			}
+		}
   }
 
   .datatable-summary-row {
@@ -113,7 +113,7 @@
       }
 
       .datatable-body-cell {
-        font-weight: bold;
+	font-weight: bold;
       }
     }
   }

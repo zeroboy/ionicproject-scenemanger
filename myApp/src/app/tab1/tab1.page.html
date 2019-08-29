@@ -25,26 +25,69 @@
 
 
     <ngx-datatable
-            class="bootstrap"
+            class="material striped ngx-datatable fixed-header fixed-row virtualized"
             [rows]="rows | async"
             [columns]="columns"
-            [columnMode]="'force'"
+            [loadingIndicator]="loadingIndicator"
+            [columnMode]="'flex'"
             [headerHeight]="50"
             [footerHeight]="50"
             [rowHeight]="50"
             [scrollbarV]="false"
             [scrollbarH]="false"
             [limit]="100"
-            >
-      <ngx-datatable-column
+    >
+      <!--<ngx-datatable-column
               *ngFor="let col of columns"
               [name]="col.name"
               [prop]="col.prop"
       >
+      </ngx-datatable-column>-->
+      <!--{ prop: 'id', name: 'ID', frozenLeft: true , width:50},
+      { prop: 'name', name: '项目名', width:50},
+      { prop: 'place_num', name: '场号' ,width:50},
+      { prop: 'fodder_num', name: '镜头号' ,width:50},
+      { prop: 'lens_type', name: '素材号', width:50 },
+      { prop: 'take_message', name: 'take信息', width:80},
+      { prop: 'lens_make_message', name: '制作镜头信息', width:120},-->
+      <ngx-datatable-column name="ID" prop="id" [flexGrow]="1" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="项目名" prop="name" [flexGrow]="1" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="场号" prop="place_num" [flexGrow]="1" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="镜头号" prop="lens_type" [flexGrow]="1" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="素材号" prop="fodder_num" [flexGrow]="2" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="take信息" prop="take_message" [flexGrow]="2" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="制作镜头信息" prop="lens_make_message" [flexGrow]="2" headerClass="ngx-tab-header" [cellClass]="getCellClass">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{value}}
+        </ng-template>
       </ngx-datatable-column>
     </ngx-datatable>
 
-    <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
       <ion-infinite-scroll-content
               loadingSpinner="bubbles"
               loadingText="加载数据中...">

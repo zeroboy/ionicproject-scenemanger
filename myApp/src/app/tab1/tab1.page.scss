@@ -2,6 +2,19 @@
   max-height: 35vh;
   overflow: hidden;
 }
-@import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/release/themes/material.css';
-@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+.ngx-tab-header{
+  background-color: #eff3f5 !important;
+  font-size: 12px !important;
+  font-weight: normal !important;
+  color: rgb(0,51,153) !important;
+  border-bottom-width: 4px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: rgb(102,120,177) !important;
+  line-height: inherit !important;
+}
+.ngx-tab-field{
+  color:rgb(102,102,153) !important;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}

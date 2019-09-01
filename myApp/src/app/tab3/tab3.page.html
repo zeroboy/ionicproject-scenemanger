@@ -1,9 +1,19 @@
+<ion-app>
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      文峰测试
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <video src="videosrc"></video>
+  <h2>videosrc：{{videosrc}}</h2>
+  <div class="add-btn">
+    <ion-button color="light" (click)="test()" color="success" >
+      触发测试
+    </ion-button>
+  </div>
+</ion-content>
+</ion-app>

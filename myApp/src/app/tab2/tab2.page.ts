@@ -34,7 +34,7 @@ export class Tab2Page {
 
   ngOnInit() {
         var sqlStatments= `CREATE TABLE IF NOT EXISTS \`users\` (
-      \`id\` int(11) NOT NULL AUTO_INCREMENT,
+      \`id\` int(11) NOT NULL AUTOINCREMENT,
       \`email\` varchar(32) NOT NULL,
       \`username\` varchar(16) NOT NULL,
       \`password\` varchar(30) DEFAULT NULL,

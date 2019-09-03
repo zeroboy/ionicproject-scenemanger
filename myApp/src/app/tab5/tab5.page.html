@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tab5</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="picture" *ngIf="picture">
+  <div class="add-btn">
+    <ion-button color="light" (click)="startcamera()" color="success" >
+      startcamera
+    </ion-button>
+  </div>
+  <div class="add-btn">
+    <ion-button color="light" (click)="takepictures()" color="success" >
+      takepictures
+    </ion-button>
+  </div>
+  <div class="add-btn">
+    <ion-button color="light" (click)="takesnapshot()" color="success" >
+      takesnapshot
+    </ion-button>
+  </div>
+  <div class="add-btn">
+    <ion-button color="light" (click)="switchcameras()" color="success" >
+      switchcameras
+    </ion-button>
+  </div>
+  <div class="add-btn">
+    <ion-button color="light" (click)="setcoloreffect()" color="success" >
+      setcoloreffect
+    </ion-button>
+  </div>
+  <div class="add-btn">
+    <ion-button color="light" (click)="stopcamera()" color="success" >
+      stopcamera
+    </ion-button>
+  </div>
+</ion-content>

@@ -48,6 +48,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab5',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../tab5/tab5.module').then(m => m.Tab5PageModule)
+          }
+        ]
+      },
+      {
+        path: 'cat',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../cat/cat.module').then(m => m.CatPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

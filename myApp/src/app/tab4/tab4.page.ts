@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NavController} from "@ionic/angular";
 import {Camera, CameraOptions} from "@ionic-native/camera/ngx";
 
+// @ts-ignore
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab4.page.html',

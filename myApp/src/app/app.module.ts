@@ -21,10 +21,15 @@ import {TabsPageModule} from "./tabs/tabs.module";
 import {Tab1PageModule} from "./tab1/tab1.module";
 import {Tab2PageModule} from "./tab2/tab2.module";
 import {Tab4PageModule} from "./tab4/tab4.module";
+import {Tab5PageModule} from "./tab5/tab5.module";
+import {CatPageModule} from "./cat/cat.module";
 import { Userlist} from "../providers/userlist/userlist";
 
 import { HTTP } from "@ionic-native/http/ngx"
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
+
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +41,10 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable'
       TabsPageModule,
       Tab1PageModule,
       Tab2PageModule,
-      Tab4PageModule
+      Tab4PageModule,
+      Tab5PageModule,
+      CatPageModule
+
   ],
   providers: [
     StatusBar,
@@ -48,6 +56,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable'
     HTTP,
     Userlist,
     NgxDatatableModule,
+      CameraPreview,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

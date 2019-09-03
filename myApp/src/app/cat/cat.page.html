@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>cat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="body">
+  </div>
+  <div class="controls">
+    <div class="block">
+      <button id="startCameraAboveButton" (click)="startCameraAbove()">Start Camera Above HTML</button>
+      <button id="stopCameraButton" (click)="stopCamera()">Stop Camera</button>
+    </div>
+
+    <div class="block">
+      <p style="margin-top:0px"><button id="startCameraBelowButton" (click)="startCameraBelow()">Start Camera Behind HTML</button></p>
+
+      <p style="margin-bottom:0px">
+        Color Effect:
+        <select id="selectColorEffect" (change)="changeColorEffect(this)">
+          <option selected value="none">none</option>
+          <option value="aqua">aqua</option>
+          <option value="blackboard">blackboard</option>
+          <option value="mono">mono</option>
+          <option value="negative">negative</option>
+          <option value="posterize">posterize</option>
+          <option value="sepia">sepia</option>
+          <option value="solarize">solarize</option>
+          <option value="whiteboard">whiteboard</option>
+        </select>
+      </p>
+
+      <p style="margin-bottom:0px;">
+        Flash Mode:
+        <select id="selectFlashMode" (change)="changeFlashMode(this)">
+          <option selected value="off">off</option>
+          <option value="on">on</option>
+          <option value="auto">auto</option>
+          <option value="torch">torch</option>
+        </select>
+      </p>
+
+      <div id="androidOnly">
+        <p style="margin-bottom:0px;">
+          Zoom:
+          <span id="zoomValue"style="margin: 0 5px;">1</span>
+          <input type="range" id="zoomSlider" min="1" max="5" value="1" />
+        </p>
+      </div>
+    </div>
+    <div class="block">
+      <button id="takePictureButton" (click)="takePicture()">Take Picture</button>
+      <button id="switchCameraButton" (click)="switchCamera()">Switch Camera</button>
+      <button id="changePreviewSize">Change Preview Size</button>
+    </div>
+    <div class="block">
+      <button id="hideButton" (click)="hides()">Hide</button>
+      <button id="showButton" (click)="shows()">Show</button>
+    </div>
+    <div class="block">
+      <button id="showSupportedPictureSizes">Supported Picture Sizes</button>
+    </div>
+  </div>
+
+  <div class="pictures">
+    <p><img id="originalPicture" width="200"/></p>
+  </div>
+
+</ion-content>
